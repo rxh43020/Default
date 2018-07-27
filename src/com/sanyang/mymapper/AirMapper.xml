@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org/DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanyang.mymapper.AirMapper">
+<select id="getAll" resultType="com.sanyang.mybean.Air" >
+select * from air
+</select>
+<insert id="add" parameterType="com.sanyang.mybean.Air">
+insert into air values(#{aid},'${aname}','${aqcity}','${adcity}',sysdate,sysdate)
+</insert>
+
+<select id="getAirbyId" resultType="com.sanyang.mybean.Air" parameterType="java.lang.Integer" >
+select * from air where aid=#{value}
+</select>
+
+<update id="updAir" parameterType="com.sanyang.mybean.Air">
+update air set  aname='${aname}',aqcity='${aqcity}',adcity='${adcity}',ardate=to_date('${ardate}','yyyy-mm-dd'),asdate=to_date('${asdate}','yyyy-mm-dd') where aid='${aid}'
+
+</update>
+
+
+</mapper>
